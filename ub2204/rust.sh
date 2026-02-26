@@ -37,9 +37,8 @@ find /usr/local/rust/toolchains/stable-x86_64-unknown-linux-gnu/bin/ -type f -ex
 echo ""
 ls -lah /usr/local/rust
 echo ""
-sed '/export PATH=/a\        export CARGO_HOME="${RUSTUP_HOME}"' -i /usr/local/rust/env
-sed "/export PATH=/a\        export RUSTUP_HOME='/usr/local/rust'" -i /usr/local/rust/env
 sed "/export PATH=/a\        export CARGO_HOME='.cargo'" -i /usr/local/rust/env
+sed "/export PATH=/a\        export RUSTUP_HOME='/usr/local/rust'" -i /usr/local/rust/env
 cat /usr/local/rust/env
 cd /usr/local
 _rust_ver="$(./rust/bin/rustc --version | awk '{print $2}')"
