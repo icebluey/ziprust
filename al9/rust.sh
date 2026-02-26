@@ -19,7 +19,7 @@ export RUSTUP_HOME=/usr/local/rust
 cd /tmp
 rm -fr /tmp/*
 curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs -o install_rust.sh
-bash install_rust.sh -v --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile complete -y
+bash install_rust.sh -v --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile default -y
 echo ""
 ls -lah /usr/local/rust
 echo ""
