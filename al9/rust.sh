@@ -26,6 +26,8 @@ echo ""
 . /usr/local/rust/env
 cargo install cargo-download
 cargo install cargo-outdated
+cargo install cargo-upgrades
+cargo install cargo-edit
 rustup target add x86_64-pc-windows-msvc
 cargo install cargo-xwin
 find /usr/local/rust -mindepth 1 -maxdepth 1 -name '.*' ! -name '.' ! -name '..' -exec rm -rf -- {} +
