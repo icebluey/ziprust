@@ -28,6 +28,12 @@ cargo install cargo-download
 cargo install cargo-outdated
 rustup target add x86_64-pc-windows-msvc
 cargo install cargo-xwin
+find /usr/local/rust -mindepth 1 -maxdepth 1 -name '.*' ! -name '.' ! -name '..' -exec rm -rf -- {} +
+rm -fr /usr/local/rust/registry
+rm -fr /usr/local/rust/downloads/*
+rm -fr /usr/local/rust/tmp/*
+find /usr/local/rust/bin/ -type f -exec file '{}' \; | sed -n -e 's/^\(.*\):[[:space:]]*ELF.*, not stripped.*/\1/p' | xargs --no-run-if-empty -I '{}' strip '{}'
+find /usr/local/rust/toolchains/stable-x86_64-unknown-linux-gnu/bin/ -type f -exec file '{}' \; | sed -n -e 's/^\(.*\):[[:space:]]*ELF.*, not stripped.*/\1/p' | xargs --no-run-if-empty -I '{}' strip '{}'
 echo ""
 ls -lah /usr/local/rust
 echo ""
