@@ -25,7 +25,7 @@ docker exec al9 /bin/bash -c 'ln -svf bash /bin/sh'
 docker exec al9 dnf update -y
 docker exec al9 /bin/bash -c 'rm -fr /tmp/*'
 docker cp al9 al9:/home/
-docker exec al9 /bin/bash /home/al9/brg.sh
+docker exec al9 /bin/bash /home/al9/rust.sh
 mkdir -p /tmp/_output_assets
 docker cp al9:/tmp/_output /tmp/_output_assets/
 
