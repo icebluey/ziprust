@@ -19,7 +19,7 @@ export RUSTUP_HOME=/usr/local/rust
 cd /tmp
 rm -fr /tmp/*
 curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs -o install_rust.sh
-bash install_rust.sh -v --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile default -y
+bash install_rust.sh -v --default-host x86_64-unknown-linux-gnu --default-toolchain 1.94.0 --profile default -y
 echo ""
 ls -lah /usr/local/rust
 echo ""
@@ -31,10 +31,10 @@ rustup target add x86_64-pc-windows-msvc
 cargo install cargo-xwin
 find /usr/local/rust -mindepth 1 -maxdepth 1 -name '.*' ! -name '.' ! -name '..' -exec rm -rf -- {} +
 rm -fr /usr/local/rust/registry
-rm -fr /usr/local/rust/downloads/*
-rm -fr /usr/local/rust/tmp/*
+rm -fr /usr/local/rust/downloads /usr/local/rust/tmp
+mkdir /usr/local/rust/downloads /usr/local/rust/tmp
 find /usr/local/rust/bin/ -type f -exec file '{}' \; | sed -n -e 's/^\(.*\):[[:space:]]*ELF.*, not stripped.*/\1/p' | xargs --no-run-if-empty -I '{}' strip '{}'
-find /usr/local/rust/toolchains/stable-x86_64-unknown-linux-gnu/bin/ -type f -exec file '{}' \; | sed -n -e 's/^\(.*\):[[:space:]]*ELF.*, not stripped.*/\1/p' | xargs --no-run-if-empty -I '{}' strip '{}'
+find /usr/local/rust/toolchains/*linux-gnu/bin/ -type f -exec file '{}' \; | sed -n -e 's/^\(.*\):[[:space:]]*ELF.*, not stripped.*/\1/p' | xargs --no-run-if-empty -I '{}' strip '{}'
 echo ""
 ls -lah /usr/local/rust
 echo ""
