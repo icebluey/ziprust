@@ -18,8 +18,9 @@ export RUSTUP_HOME=/usr/local/rust
 
 cd /tmp
 rm -fr /tmp/*
+_stable_ver="$(wget -qO- 'https://forge.rust-lang.org/infra/other-installation-methods.html' | grep -i x86_64-unknown-linux-gnu | sed 's|"|\n|g' | grep -ivE 'alpha|beta|night' | grep -i "https://.*x86_64-unknown-linux-gnu" | sed 's|.*rust-||g; s|-x86.*||g' | sort -V | tail -n 1)"
 curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs -o install_rust.sh
-bash install_rust.sh -v --default-host x86_64-unknown-linux-gnu --default-toolchain 1.94.0 --profile default -y
+bash install_rust.sh -v --default-host x86_64-unknown-linux-gnu --default-toolchain ${_stable_ver} --profile default -y
 echo ""
 ls -lah /usr/local/rust
 echo ""
